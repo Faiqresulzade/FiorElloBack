@@ -1,0 +1,52 @@
+﻿@using FiorEllo.Models
+@model Product
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-description">
+                            Details Product
+                        </p>
+                         <p>Id</p>
+                         <p>@Model.Id</p>
+                         <p>Title</p>
+                         <p>@Model.Title</p>
+                           <p>Category</p>
+                        @if (Model.Category != null) {
+                            <p>@Model.Category.Title</p>
+                        }
+                          
+                           <p>Photo</p>
+                           @foreach (var productPhoto in Model.ProductPhotos)
+                           {
+                               <img src="~/assets/img/@productPhoto.Name"/>
+                           }
+                           <p>Price</p>
+                           <p>@Model.Price</p>
+                           <p>Description</p>
+                           <p>@Model.Description</p>
+                           <p>Dimensions</p>
+                           <p>@Model.Dimensions</p>
+                           <p>Quantity</p>
+                           <p>@Model.Quantity</p>
+                           <p>Weight</p>
+                           <p>@Model.Weight</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#Description'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
